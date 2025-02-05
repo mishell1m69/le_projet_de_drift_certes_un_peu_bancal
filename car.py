@@ -102,20 +102,20 @@ class Car():
     
     def input(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] or keys[pygame.K_z]:
             self.back.momentum_x+=self.back_direction_vector[0]*self.speed_mult
             self.back.momentum_y+=self.back_direction_vector[1]*self.speed_mult
             self.center_of_mass.momentum_x+=self.back_direction_vector[0]*self.speed_mult
             self.center_of_mass.momentum_y+=self.back_direction_vector[1]*self.speed_mult
-        if keys[pygame.K_LEFT] and self.front_wheel_angle>-1:
+        if keys[pygame.K_LEFT] and self.front_wheel_angle>-1 or keys[pygame.K_q] and self.front_wheel_angle>-1:
             self.last_wheel_update = 0
             self.front_wheel_angle-=0.1
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] or keys[pygame.K_s]:
             self.back.momentum_x-=self.back_direction_vector[0]*self.speed_mult
             self.back.momentum_y-=self.back_direction_vector[1]*self.speed_mult
             self.center_of_mass.momentum_x-=self.back_direction_vector[0]*self.speed_mult
             self.center_of_mass.momentum_y-=self.back_direction_vector[1]*self.speed_mult
-        if keys[pygame.K_RIGHT] and self.front_wheel_angle<1:
+        if keys[pygame.K_RIGHT] and self.front_wheel_angle<1 or keys[pygame.K_d] and self.front_wheel_angle<1:
             self.last_wheel_update = 0
             self.front_wheel_angle+=0.1
             
